@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { useState, useRef, ReactElement } from 'react'
+import { useState, useRef } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import { parseISO, format, intervalToDuration } from 'date-fns'
@@ -29,11 +29,11 @@ interface AboutProps {
 
 export const getStaticProps: GetStaticProps<AboutProps> = async () => {
   const meta = {
-    title: 'About // Driss Nafii',
+    title: 'About // Gustavo Castro',
     description:
-      'Driss Nafii is a Moroccan Full-Stack web developer specializing in the MERN stack. He is currently studying at YouCode | UM6P in Youssoufia. His passion for building modern and scalable web applications led him to specialize in React.js, Next.js, Node.js, Express.js, and databases like MongoDB and PostgreSQL. He has experience with AWS services (EC2, RDS, S3, Lambda) and modern tools like Docker, N8N, and 11Labs.',
+      'Gustavo Castro is a Full-Stack web developer specializing in modern web technologies. His passion for building modern and scalable web applications led him to specialize in React.js, Next.js, Node.js, and modern development tools.',
     tagline: 'Create. Learn. Evolve.',
-    image: '/static/images/photo.png?v=2',
+    image: '/static/images/photo.webp',
     primaryColor: '#ff80bf',
     secondaryColor: '#9580ff',
   }
@@ -55,28 +55,28 @@ function About(props: AboutProps) {
       <Container>
         <Section>
           <Image
-            alt="Driss"
-            src="/static/images/photo.png?v=2"
+            alt="Gustavo Castro"
+            src="/static/images/photo.webp"
             width="336"
-            height="447"
+            height="336"
             priority
+            style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
           />
         </Section>
         <Section>
           <Paragraph $marginTop>
-            <strong>Hey, I&apos;m Driss Nafii</strong>
-            I started web development in 2024, specializing in the MERN stack.
+            <strong>Hey, I&apos;m Gustavo Castro</strong>
+            I&apos;m a passionate Full-Stack web developer specializing in modern web technologies.
           </Paragraph>
           <Paragraph>
-            I&apos;m currently a <strong>Full-Stack web development student</strong> at YouCode |
-            UM6P. I completed an AI development internship at Runkuplus in Agadir. I&apos;m
-            originally from Morocco and currently living in <strong>Youssoufia</strong> for my
-            studies.
+            I&apos;m currently focused on building <strong>scalable web applications</strong> using 
+            React.js, Next.js, and Node.js. I have experience with modern development tools and 
+            enjoy creating user-friendly interfaces and robust backend systems.
           </Paragraph>
           <Paragraph>
             <strong>I love modern development</strong>, new technologies, and innovative projects.
-            When I&apos;m not coding, I enjoy learning new technologies, watching movies, and{' '}
-            <strong>exploring new development tools</strong>.
+            When I&apos;m not coding, I enjoy learning new technologies, exploring development tools, 
+            and <strong>staying up-to-date with industry trends</strong>.
           </Paragraph>
         </Section>
       </Container>
@@ -117,7 +117,7 @@ function About(props: AboutProps) {
             as="a"
             download
             role="button"
-            href="/static/images/photo.png?v=2"
+            href="/static/images/photo.webp"
             style={btnStyle}
             onClick={downloadHeadshot}
             onMouseEnter={() => downloadRef.current?.play()}
@@ -205,8 +205,8 @@ function About(props: AboutProps) {
         <meta content={title} property="og:title" />
         <meta content={stripHtml(description)} name="description" />
         <meta content={stripHtml(description)} property="og:description" />
-        <meta content="https://drissnafii.me/about" property="og:url" />
-        <meta content={`https://drissnafii.me${image}`} property="og:image" />
+        <meta content="https://gusttavocastro.com/about" property="og:url" />
+        <meta content={`https://gusttavocastro.com${image}`} property="og:image" />
       </Head>
 
       {renderIntro()}
