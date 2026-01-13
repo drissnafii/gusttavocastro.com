@@ -1,0 +1,157 @@
+import { createGlobalStyle } from 'styled-components'
+
+export const GlobalStyles = createGlobalStyle`
+  @font-face {
+    font-family: 'Neuzeit Grotesk Bold';
+    src: url("/static/font/NeuzeitGrotesk-Bold.woff2") format("woff2"),
+      url("/static/font/NeuzeitGrotesk-Bold.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Fira Code';
+    src: url("/static/font/FiraCode-Regular.woff2") format("woff2"),
+      url("/static/font/FiraCode-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Biotif';
+    src: url("/static/font/Biotif-Bold.woff2") format("woff2"),
+      url("/static/font/Biotif-Bold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Biotif';
+    src: url("/static/font/Biotif-Book.woff2") format("woff2"),
+      url("/static/font/Biotif-Book.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Biotif';
+    src: url("/static/font/Biotif-Regular.woff2") format("woff2"),
+      url("/static/font/Biotif-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Biotif';
+    src: url("/static/font/Biotif-RegularItalic.woff2") format("woff2"),
+      url("/static/font/Biotif-RegularItalic.woff") format("woff");
+    font-weight: normal;
+    font-style: italic;
+  }
+
+  * {
+    font-family: ${({ theme }) => theme.fonts.body};
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    background: ${({ theme }) => theme.colors.background};
+  }
+
+  kbd {
+    color: ${({ theme }) => theme.colors.background};
+    background: ${({ theme }) => theme.colors.secondary};
+    padding: 1px 5px;
+    border-radius: 4px;
+    transition: background ${({ theme }) => theme.transitions.duration} ease-in-out;
+    font-family: ${({ theme }) => theme.fonts.code};
+    font-size: 14px;
+  }
+
+  svg {
+    width: 32px;
+    height: 32px;
+    fill: white;
+  }
+
+  figure {
+    margin: 0;
+  }
+
+  twitterwidget {
+    margin: 0 auto;
+  }
+
+  code {
+    background: #151417;
+    border-radius: ${({ theme }) => theme.radii.borderRadius};
+    color: ${({ theme }) => theme.colors.primary};
+    font-family: ${({ theme }) => theme.fonts.code};
+    font-size: 15px;
+  }
+
+  :not(pre) > code {
+    padding: 4px;
+  }
+
+  h1 {
+    font-family: ${({ theme }) => theme.fonts.heading};
+    font-size: 48px;
+    line-height: 50px;
+    margin: 0 0 20px;
+    color: ${({ theme }) => theme.colors.primary};
+  }
+
+  h2 {
+    color: ${({ theme }) => theme.colors.primary};
+    margin: 60px 0 0;
+    font-size: 24px;
+  }
+
+  h3, h3 a {
+    color: ${({ theme }) => theme.colors.primary};
+    font-size: 18px;
+    margin: 20px 0 0;
+  }
+
+  ul {
+    margin: 0;
+  }
+
+  img {
+    border-radius: 8px;
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  p {
+    margin: 20px 0;
+    color: ${({ theme }) => theme.colors.secondary};
+  }
+
+  strong {
+    color: ${({ theme }) => theme.colors.primary};
+    font-weight: 500;
+  }
+
+  blockquote {
+    border-left: 4px solid ${({ theme }) => theme.colors.hover};
+    color: ${({ theme }) => theme.colors.secondary};
+    font-style: italic;
+    margin: 0;
+    padding-left: 20px;
+  }
+
+  a {
+    border-bottom: .5px solid ${({ theme }) => theme.colors.secondary};
+    color: ${({ theme }) => theme.colors.primary};
+    text-decoration: none;
+    transition: opacity ${({ theme }) => theme.transitions.duration} ease-in-out;
+  }
+
+  a:hover, a:focus {
+    opacity: 0.8;
+  }
+`
