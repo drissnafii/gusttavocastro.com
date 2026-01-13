@@ -13,6 +13,7 @@ import dynamic from 'next/dynamic'
 import type { LottieRefCurrentProps } from 'lottie-react'
 
 import copyBioIcon from '../public/static/icons/copy-bio.json'
+import checkmarkIcon from '../public/static/icons/checkmark.json'
 import downloadIcon from '../public/static/icons/download.json'
 
 const Lottie = dynamic(() => import('lottie-react'), { ssr: false })
@@ -45,6 +46,7 @@ function About(props: AboutProps) {
   const [toastTitle, setToastTitle] = useState('')
   const [toastDescription, setToastDescription] = useState('')
   const [showToast, setShowToast] = useState(false)
+  const [isCopied, setIsCopied] = useState(false)
   const copyBioRef = useRef<LottieRefCurrentProps>(null)
   const downloadRef = useRef<LottieRefCurrentProps>(null)
 
@@ -82,7 +84,7 @@ function About(props: AboutProps) {
   }
 
   const renderBio = () => {
-    const btnStyle = { display: 'inline-flex', justifyContent: 'center', alignItems: 'center' }
+    const btnStyle = { display: 'inline-flex', justifyContent: 'center', alignItems: 'center', minWidth: '155px' }
     const iconStyle = { width: 24, height: 24, marginRight: 8 }
 
     return (
@@ -98,17 +100,17 @@ function About(props: AboutProps) {
             as="button"
             style={btnStyle}
             onClick={copyBio}
-            onMouseEnter={() => copyBioRef.current?.play()}
-            onMouseLeave={() => copyBioRef.current?.stop()}
+            onMouseEnter={() => !isCopied && copyBioRef.current?.play()}
+            onMouseLeave={() => !isCopied && copyBioRef.current?.stop()}
           >
             <Lottie
               lottieRef={copyBioRef}
               style={iconStyle}
-              animationData={copyBioIcon}
+              animationData={isCopied ? checkmarkIcon : copyBioIcon}
               loop={false}
-              autoplay={false}
+              autoplay={isCopied}
             />
-            Copy Bio
+            {isCopied ? 'Copied' : 'Copy Bio'}
           </ButtonPrimary>
           <span style={{ margin: '0 20px 0 10px' }}>•</span>
           <ButtonPrimary
@@ -187,9 +189,13 @@ function About(props: AboutProps) {
     e.preventDefault()
     navigator.clipboard.writeText(description)
 
-    setToastTitle('Copied :D')
-    setToastDescription('You can now paste it anywhere.')
-    setShowToast(true)
+    // Set copied state
+    setIsCopied(true)
+
+    // Reset after 2 seconds
+    setTimeout(() => {
+      setIsCopied(false)
+    }, 2000)
   }
 
   return (
