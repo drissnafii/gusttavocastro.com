@@ -37,7 +37,7 @@ const items: ProjectYear[] = [
         description: 'A web guide for the 2030 FIFA World Cup in Morocco',
         url: 'https://github.com/drissnafii/yallavamos',
         active: true,
-        icon: 'home',
+        icon: 'soccer',
         stats: 'PHP, Blade, PostgreSQL, Laravel 12',
       },
     ],

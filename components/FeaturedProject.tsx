@@ -27,6 +27,9 @@ interface AnimationProps {
 export default function FeaturedProject({ project, index }: FeaturedProjectProps) {
   const icon = project.icon ? require(`../public/static/icons/${project.icon}.json`) : null
   const iconRef = useRef<LottieRefCurrentProps>(null)
+  
+  // Make soccer icon bigger than other icons
+  const iconSize = project.icon === 'soccer' ? 40 : 24
 
   return (
     <ProjectLink
@@ -37,13 +40,15 @@ export default function FeaturedProject({ project, index }: FeaturedProjectProps
     >
       <Animation index={index}>
         {icon && (
-          <Lottie
-            lottieRef={iconRef}
-            style={{ width: 24, height: 24, marginBottom: 10 }}
-            animationData={icon}
-            loop={false}
-            autoplay={false}
-          />
+          <div style={{ height: 34, display: 'flex', alignItems: 'center', marginBottom: 10 }}>
+            <Lottie
+              lottieRef={iconRef}
+              style={{ width: iconSize, height: iconSize }}
+              animationData={icon}
+              loop={false}
+              autoplay={false}
+            />
+          </div>
         )}
         <Body>
           <Title>{project.title}</Title>
