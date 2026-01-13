@@ -33,6 +33,8 @@ interface MyAppProps extends AppProps {
   Component: ComponentWithLayout
 }
 
+const MotionDiv = motion.div as any
+
 export default function MyApp({ Component, pageProps }: MyAppProps) {
   const Layout = Component.Layout || Noop
   const router = useRouter()
@@ -62,12 +64,12 @@ export default function MyApp({ Component, pageProps }: MyAppProps) {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <CommandBar>
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.div
+        <AnimatePresence exitBeforeEnter initial={false}>
+          <MotionDiv
             key={router.pathname}
-            initial={{ opacity: 0, x: -20, filter: 'blur(4px)' }}
-            animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
-            exit={{ opacity: 0, x: 20, filter: 'blur(4px)' }}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 20 }}
             transition={{
               duration: 0.3,
               ease: 'easeInOut',
@@ -76,7 +78,7 @@ export default function MyApp({ Component, pageProps }: MyAppProps) {
             <Layout>
               <Component {...pageProps} />
             </Layout>
-          </motion.div>
+          </MotionDiv>
         </AnimatePresence>
       </CommandBar>
     </ThemeProvider>
