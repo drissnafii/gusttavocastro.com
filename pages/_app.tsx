@@ -11,7 +11,7 @@ import { useRouter } from 'next/router'
 import { useEffect, ComponentType, ReactElement, useState } from 'react'
 import { theme } from '../styles/theme'
 import { GlobalStyles } from '../styles/GlobalStyles'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
 
 Router.events.on('routeChangeComplete', url => gtag.pageview(url))
 
@@ -33,20 +33,21 @@ interface MyAppProps extends AppProps {
   Component: ComponentWithLayout
 }
 
-const MotionDiv = motion.div as any
-
 export default function MyApp({ Component, pageProps }: MyAppProps) {
   const Layout = Component.Layout || Noop
   const router = useRouter()
-  const [isRouteChanging, setIsRouteChanging] = useState(false)
 
   useEffect(() => {
     trackPageview()
 
-    const handleStart = () => setIsRouteChanging(true)
+    const handleStart = () => {
+      document.body.style.pointerEvents = 'none'
+    }
+    
     const handleComplete = () => {
       trackPageview()
-      setIsRouteChanging(false)
+      document.body.style.pointerEvents = ''
+      window.scrollTo(0, 0)
     }
 
     router.events.on('routeChangeStart', handleStart)
@@ -65,20 +66,11 @@ export default function MyApp({ Component, pageProps }: MyAppProps) {
       <GlobalStyles />
       <CommandBar>
         <AnimatePresence exitBeforeEnter initial={false}>
-          <MotionDiv
-            key={router.pathname}
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 20 }}
-            transition={{
-              duration: 0.3,
-              ease: 'easeInOut',
-            }}
-          >
+          <div key={router.pathname} className="page-transition">
             <Layout>
               <Component {...pageProps} />
             </Layout>
-          </MotionDiv>
+          </div>
         </AnimatePresence>
       </CommandBar>
     </ThemeProvider>

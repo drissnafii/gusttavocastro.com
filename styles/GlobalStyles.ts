@@ -71,6 +71,62 @@ export const GlobalStyles = createGlobalStyle`
     background: ${({ theme }) => theme.colors.background};
   }
 
+  .page-transition {
+    animation: fadeInUp 0.4s ease-out;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+      filter: blur(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  /* Staggered animation for child elements */
+  .page-transition > * > * > * {
+    animation: fadeInUpStagger 0.5s ease-out;
+    animation-fill-mode: both;
+  }
+
+  .page-transition > * > * > *:nth-child(1) {
+    animation-delay: 0.05s;
+  }
+
+  .page-transition > * > * > *:nth-child(2) {
+    animation-delay: 0.1s;
+  }
+
+  .page-transition > * > * > *:nth-child(3) {
+    animation-delay: 0.15s;
+  }
+
+  .page-transition > * > * > *:nth-child(4) {
+    animation-delay: 0.2s;
+  }
+
+  .page-transition > * > * > *:nth-child(5) {
+    animation-delay: 0.25s;
+  }
+
+  @keyframes fadeInUpStagger {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+      filter: blur(2px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
   kbd {
     color: ${({ theme }) => theme.colors.background};
     background: ${({ theme }) => theme.colors.secondary};
