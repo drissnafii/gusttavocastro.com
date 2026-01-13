@@ -8,9 +8,10 @@ import Router from 'next/router'
 import * as gtag from '../lib/gtag'
 import CommandBar from '../components/CommandBar'
 import { useRouter } from 'next/router'
-import { useEffect, ComponentType, ReactElement } from 'react'
+import { useEffect, ComponentType, ReactElement, useState } from 'react'
 import { theme } from '../styles/theme'
 import { GlobalStyles } from '../styles/GlobalStyles'
+import { AnimatePresence, motion } from 'framer-motion'
 
 Router.events.on('routeChangeComplete', url => gtag.pageview(url))
 
@@ -35,22 +36,48 @@ interface MyAppProps extends AppProps {
 export default function MyApp({ Component, pageProps }: MyAppProps) {
   const Layout = Component.Layout || Noop
   const router = useRouter()
+  const [isRouteChanging, setIsRouteChanging] = useState(false)
 
   useEffect(() => {
     trackPageview()
 
-    router.events.on('routeChangeComplete', () => {
+    const handleStart = () => setIsRouteChanging(true)
+    const handleComplete = () => {
       trackPageview()
-    })
+      setIsRouteChanging(false)
+    }
+
+    router.events.on('routeChangeStart', handleStart)
+    router.events.on('routeChangeComplete', handleComplete)
+    router.events.on('routeChangeError', handleComplete)
+
+    return () => {
+      router.events.off('routeChangeStart', handleStart)
+      router.events.off('routeChangeComplete', handleComplete)
+      router.events.off('routeChangeError', handleComplete)
+    }
   }, [router.events])
 
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <CommandBar>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={router.pathname}
+            initial={{ opacity: 0, x: -20, filter: 'blur(4px)' }}
+            animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+            exit={{ opacity: 0, x: 20, filter: 'blur(4px)' }}
+            transition={{
+              duration: 0.3,
+              ease: 'easeInOut',
+            }}
+          >
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </motion.div>
+        </AnimatePresence>
       </CommandBar>
     </ThemeProvider>
   )

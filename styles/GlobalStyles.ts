@@ -59,10 +59,15 @@ export const GlobalStyles = createGlobalStyle`
     font-family: ${({ theme }) => theme.fonts.body};
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   html, body {
     margin: 0;
     padding: 0;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     background: ${({ theme }) => theme.colors.background};
   }
 
