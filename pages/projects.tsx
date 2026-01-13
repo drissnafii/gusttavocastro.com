@@ -72,7 +72,7 @@ function Projects(props: ProjectsProps) {
   }
 
   const { title, image } = props
-  const description = `I'm obsessed with projects where <strong>user experience</strong> is the focus. Here you can navigate to <strong>${getTotalProjects()} different</strong> websites, apps, and libraries I've built. Some projects are still active, others have been discontinued— and I have new ones that are being sketched out.`
+  const description = `During my bootcamp journey, I built <strong>more than 30 projects</strong> that helped me learn and grow as a developer. Each project taught me something new about <strong>web development, problem-solving, and user experience</strong>. Here are some of the key projects that showcase my skills and passion for creating meaningful digital experiences.`
 
   return (
     <>
