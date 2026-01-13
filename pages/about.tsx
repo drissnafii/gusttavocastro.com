@@ -29,9 +29,9 @@ interface AboutProps {
 
 export const getStaticProps: GetStaticProps<AboutProps> = async () => {
   const meta = {
-    title: 'About // Gustavo Castro',
+    title: 'About // Driss Nafii',
     description:
-      'Gustavo Castro is a Full-Stack web developer specializing in modern web technologies. His passion for building modern and scalable web applications led him to specialize in React.js, Next.js, Node.js, and modern development tools.',
+      'Driss Nafii is a Full-Stack web developer specializing in modern web technologies. His passion for building modern and scalable web applications led him to specialize in React.js, Next.js, Node.js, and modern development tools.',
     tagline: 'Create. Learn. Evolve.',
     image: '/static/images/photo.webp',
     primaryColor: '#ff80bf',
@@ -55,7 +55,7 @@ function About(props: AboutProps) {
       <Container>
         <Section>
           <Image
-            alt="Gustavo Castro"
+            alt="Driss Nafii"
             src="/static/images/photo.webp"
             width="336"
             height="336"
@@ -65,7 +65,7 @@ function About(props: AboutProps) {
         </Section>
         <Section>
           <Paragraph $marginTop>
-            <strong>Hey, I&apos;m Gustavo Castro</strong>
+            <strong>Hey, I&apos;m Driss Nafii</strong>
             I&apos;m a passionate Full-Stack web developer specializing in modern web technologies.
           </Paragraph>
           <Paragraph>
@@ -205,8 +205,8 @@ function About(props: AboutProps) {
         <meta content={title} property="og:title" />
         <meta content={stripHtml(description)} name="description" />
         <meta content={stripHtml(description)} property="og:description" />
-        <meta content="https://gusttavocastro.com/about" property="og:url" />
-        <meta content={`https://gusttavocastro.com${image}`} property="og:image" />
+        <meta content="https://drissnafii.me/about" property="og:url" />
+        <meta content={`https://drissnafii.me${image}`} property="og:image" />
       </Head>
 
       {renderIntro()}
