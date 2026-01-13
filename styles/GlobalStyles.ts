@@ -7,6 +7,7 @@ export const GlobalStyles = createGlobalStyle`
       url("/static/font/NeuzeitGrotesk-Bold.woff") format("woff");
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
   }
 
   @font-face {
@@ -15,6 +16,7 @@ export const GlobalStyles = createGlobalStyle`
       url("/static/font/FiraCode-Regular.woff") format("woff");
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
   }
 
   @font-face {
@@ -23,6 +25,7 @@ export const GlobalStyles = createGlobalStyle`
       url("/static/font/Biotif-Bold.woff") format("woff");
     font-weight: bold;
     font-style: normal;
+    font-display: swap;
   }
 
   @font-face {
@@ -31,6 +34,7 @@ export const GlobalStyles = createGlobalStyle`
       url("/static/font/Biotif-Book.woff") format("woff");
     font-weight: 500;
     font-style: normal;
+    font-display: swap;
   }
 
   @font-face {
@@ -39,6 +43,7 @@ export const GlobalStyles = createGlobalStyle`
       url("/static/font/Biotif-Regular.woff") format("woff");
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
   }
 
   @font-face {
@@ -47,6 +52,7 @@ export const GlobalStyles = createGlobalStyle`
       url("/static/font/Biotif-RegularItalic.woff") format("woff");
     font-weight: normal;
     font-style: italic;
+    font-display: swap;
   }
 
   * {
