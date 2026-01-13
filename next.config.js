@@ -3,6 +3,13 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  images: {
+    localPatterns: [
+      {
+        pathname: '/static/**',
+      },
+    ],
+  },
 }
 
 export default nextConfig

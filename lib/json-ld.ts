@@ -66,7 +66,7 @@ export const getPersonJsonLd = (): PersonJsonLd => {
     ],
     description:
       'Driss Nafii is a Moroccan Full-Stack web developer specializing in the MERN stack. He is currently studying at YouCode | UM6P in Youssoufia and completed an AI development internship at Runkuplus in Agadir.',
-    image: 'https://drissnafii.me/static/images/photo.png',
+    image: 'https://drissnafii.me/static/images/photo.png?v=2',
     name: 'Driss Nafii',
     givenName: 'Driss',
     familyName: 'Nafii',

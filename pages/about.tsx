@@ -32,7 +32,7 @@ export const getStaticProps: GetStaticProps<AboutProps> = async () => {
     description:
       'Driss Nafii is a Moroccan Full-Stack web developer specializing in the MERN stack. He is currently studying at YouCode | UM6P in Youssoufia. His passion for building modern and scalable web applications led him to specialize in React.js, Next.js, Node.js, Express.js, and databases like MongoDB and PostgreSQL. He has experience with AWS services (EC2, RDS, S3, Lambda) and modern tools like Docker, N8N, and 11Labs.',
     tagline: 'Create. Learn. Evolve.',
-    image: '/static/images/photo.png',
+    image: '/static/images/photo.png?v=2',
     primaryColor: '#ff80bf',
     secondaryColor: '#9580ff',
   }
@@ -54,9 +54,9 @@ function About(props: AboutProps) {
         <Section>
           <Image
             alt="Driss"
-            src="/static/images/photo.png"
+            src="/static/images/photo.png?v=2"
             width="336"
-            height="336"
+            height="447"
             priority
           />
         </Section>
@@ -115,7 +115,7 @@ function About(props: AboutProps) {
             as="a"
             download
             role="button"
-            href="/static/images/photo.png"
+            href="/static/images/photo.png?v=2"
             style={btnStyle}
             onClick={downloadHeadshot}
             onMouseEnter={() => downloadRef.current?.play()}
