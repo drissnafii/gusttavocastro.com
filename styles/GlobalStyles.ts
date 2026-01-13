@@ -72,58 +72,73 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   .page-transition {
-    animation: fadeInUp 0.4s ease-out;
+    /* No animation on the page wrapper itself */
+  }
+
+  /* Only animate the main content, not navbar or footer */
+  .page-transition main,
+  .page-transition [class*="PostMain"],
+  .page-transition [class*="Home"] {
+    animation: fadeInUp 0.25s ease-out;
   }
 
   @keyframes fadeInUp {
     from {
       opacity: 0;
-      transform: translateY(20px);
-      filter: blur(4px);
+      transform: translateY(15px);
     }
     to {
       opacity: 1;
       transform: translateY(0);
-      filter: blur(0);
     }
   }
 
-  /* Staggered animation for child elements */
-  .page-transition > * > * > * {
-    animation: fadeInUpStagger 0.5s ease-out;
+  /* Staggered animation for content children only */
+  .page-transition main > * > *,
+  .page-transition [class*="PostMain"] > * > *,
+  .page-transition [class*="Home"] > * > * {
+    animation: fadeInUpStagger 0.3s ease-out;
     animation-fill-mode: both;
   }
 
-  .page-transition > * > * > *:nth-child(1) {
-    animation-delay: 0.05s;
+  .page-transition main > * > *:nth-child(1),
+  .page-transition [class*="PostMain"] > * > *:nth-child(1),
+  .page-transition [class*="Home"] > * > *:nth-child(1) {
+    animation-delay: 0.03s;
   }
 
-  .page-transition > * > * > *:nth-child(2) {
-    animation-delay: 0.1s;
+  .page-transition main > * > *:nth-child(2),
+  .page-transition [class*="PostMain"] > * > *:nth-child(2),
+  .page-transition [class*="Home"] > * > *:nth-child(2) {
+    animation-delay: 0.06s;
   }
 
-  .page-transition > * > * > *:nth-child(3) {
+  .page-transition main > * > *:nth-child(3),
+  .page-transition [class*="PostMain"] > * > *:nth-child(3),
+  .page-transition [class*="Home"] > * > *:nth-child(3) {
+    animation-delay: 0.09s;
+  }
+
+  .page-transition main > * > *:nth-child(4),
+  .page-transition [class*="PostMain"] > * > *:nth-child(4),
+  .page-transition [class*="Home"] > * > *:nth-child(4) {
+    animation-delay: 0.12s;
+  }
+
+  .page-transition main > * > *:nth-child(5),
+  .page-transition [class*="PostMain"] > * > *:nth-child(5),
+  .page-transition [class*="Home"] > * > *:nth-child(5) {
     animation-delay: 0.15s;
-  }
-
-  .page-transition > * > * > *:nth-child(4) {
-    animation-delay: 0.2s;
-  }
-
-  .page-transition > * > * > *:nth-child(5) {
-    animation-delay: 0.25s;
   }
 
   @keyframes fadeInUpStagger {
     from {
       opacity: 0;
-      transform: translateY(20px);
-      filter: blur(2px);
+      transform: translateY(15px);
     }
     to {
       opacity: 1;
       transform: translateY(0);
-      filter: blur(0);
     }
   }
 

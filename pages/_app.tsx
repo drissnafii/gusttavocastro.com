@@ -11,7 +11,6 @@ import { useRouter } from 'next/router'
 import { useEffect, ComponentType, ReactElement, useState } from 'react'
 import { theme } from '../styles/theme'
 import { GlobalStyles } from '../styles/GlobalStyles'
-import { AnimatePresence } from 'framer-motion'
 
 Router.events.on('routeChangeComplete', url => gtag.pageview(url))
 
@@ -40,24 +39,15 @@ export default function MyApp({ Component, pageProps }: MyAppProps) {
   useEffect(() => {
     trackPageview()
 
-    const handleStart = () => {
-      document.body.style.pointerEvents = 'none'
-    }
-    
     const handleComplete = () => {
       trackPageview()
-      document.body.style.pointerEvents = ''
       window.scrollTo(0, 0)
     }
 
-    router.events.on('routeChangeStart', handleStart)
     router.events.on('routeChangeComplete', handleComplete)
-    router.events.on('routeChangeError', handleComplete)
 
     return () => {
-      router.events.off('routeChangeStart', handleStart)
       router.events.off('routeChangeComplete', handleComplete)
-      router.events.off('routeChangeError', handleComplete)
     }
   }, [router.events])
 
@@ -65,13 +55,11 @@ export default function MyApp({ Component, pageProps }: MyAppProps) {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <CommandBar>
-        <AnimatePresence exitBeforeEnter initial={false}>
-          <div key={router.pathname} className="page-transition">
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </div>
-        </AnimatePresence>
+        <div key={router.pathname} className="page-transition">
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </div>
       </CommandBar>
     </ThemeProvider>
   )
